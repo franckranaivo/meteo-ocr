@@ -1,16 +1,16 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+    general: {
+      margin: 20
+    },
     button: {
-        marginRight:40,
-        marginLeft:40,
+        marginRight:5,
+        marginLeft:5,
         marginTop:10,
         paddingTop:10,
         paddingBottom:10,
         backgroundColor:'#A2273C',
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff'
     },
     textinput: {
         marginLeft: 5,
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         height: 50,
         borderColor: '#000000',
         borderWidth: 1,
-        paddingLeft: 5
+        paddingLeft: 15
     },
     buttonText:{
         color:'#fff',
@@ -26,4 +26,5 @@ export default StyleSheet.create({
         paddingLeft : 10,
         paddingRight : 10
     }
+
 })

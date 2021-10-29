@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, Text, TextInput, View } from 'react-native'
 import  style from '../styles'
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "react-native-screens/native-stack";
+
 
 export default class Search extends Component {
     
@@ -15,13 +18,14 @@ export default class Search extends Component {
         this.setState({city: city})
     }
 
-    submit () {
-        
+    submit (event) {
+        console.log(event)
+        this.props.navigation.navigate('Result',{city: this.state.city})
     }
 
     render() {
         return (
-            <View style={{ marginTop: 40 }}>
+            <View style={style.general}>
                 <TextInput 
                     style={ style.textinput } 
                     placeholder='Ville ...' 
@@ -30,7 +34,7 @@ export default class Search extends Component {
                 />
                 <TouchableOpacity
                     style={style.button}
-                    onPress={this.submit}
+                    onPress={(event) => {this.submit(event)}}
                     >
                     <Text style={style.buttonText}>Rechercher</Text>
                 </TouchableOpacity>
@@ -39,3 +43,23 @@ export default class Search extends Component {
     }
 }
 
+function Result(props) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Result screen {props.city}</Text>
+        </View>
+    );
+}
+
+const Stack = createNativeStackNavigator();
+
+function Navigator() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Search">
+                <Stack.Screen name="Search" component={Search} />
+                <Stack.Screen name="Result" component={Result} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
