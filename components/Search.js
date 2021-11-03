@@ -17,7 +17,6 @@ export class Search extends Component {
     }
 
     submit (event) {
-        console.log('ici')
         this.props.navigation.navigate('Result', {city: this.state.city})
     }
 
